@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package dev.x0y14.chat2.types.v1;
+
+enum MessageKind {
+  MESSAGE_KIND_TEXT = 0;
+  MESSAGE_KIND_IMAGE = 1;
+}
+
+message Message {
+  string id = 1;
+  MessageKind kind = 2;
+  string from = 3;
+  string to = 4;
+  string metadata = 5;
+
+  string text = 6;
+
+  string created_at = 10;
+  string updated_at = 11;
+}
+
+
+enum OperationKind {
+  OPERATION_KIND_NOOP = 0;
+  OPERATION_KIND_SEND_MESSAGE = 1;
+  OPERATION_KIND_FETCH_OPS = 2;
+}
+
+message Operation {
+  string id = 1;
+  OperationKind kind = 2;
+
+  string param1 = 3;
+  string param2 = 4;
+  string param3 = 5;
+  Message msg = 6;
+
+  string created_at = 10;
+  string updated_at = 11;
+}

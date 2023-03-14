@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package dev.x0y14.chat2.core.v1;
+import "types.proto";
+
+// メッセージ送信
+message SendMessageRequest {
+  string to = 1;
+  string text = 2;
+}
+message SendMessageResponse {
+}
+
+// オペレーション取得
+message FetchOpsRequest {
+  string base = 1; // これより大きいIDが返却される(過去+リアルタイム), 空白だった場合は、リアルタイムで全部返す
+}
+message FetchOpsResponse {
+  types.v1.Operation op = 1;
+}
+
+
+service CoreService {
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
+  rpc FetchOps(FetchOpsRequest) returns (stream FetchOpsResponse) {}
+}
