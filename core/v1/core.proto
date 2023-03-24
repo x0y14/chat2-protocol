@@ -19,7 +19,7 @@ message SendMessageResponse {
 
 // オペレーション取得
 message FetchOpsRequest {
-  string last_operation_id = 1; // これより大きいIDが返却される(過去+リアルタイム), 空白だった場合は、リアルタイムで全部返す
+  int64 last_operation_id = 1; // これより大きいIDが返却される(過去+リアルタイム), 空白だった場合は、リアルタイムで全部返す
 }
 message FetchOpsResponse {
   types.v1.Operation op = 1;
