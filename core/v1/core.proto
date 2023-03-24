@@ -26,7 +26,17 @@ message FetchOpsResponse {
 }
 
 
+// プロフィール取得
+message GetProfileRequest {
+  string user_id = 1; // 空白だったら自分のを返す?
+}
+message GetProfileResponse {
+  types.v1.Profile profile = 1;
+}
+
+
 service CoreService {
   rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
   rpc FetchOps(FetchOpsRequest) returns (stream FetchOpsResponse) {}
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse) {}
 }

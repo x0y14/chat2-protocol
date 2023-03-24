@@ -39,3 +39,13 @@ message Operation {
   string created_at = 10;
   string updated_at = 11;
 }
+
+
+message Profile {
+  string id = 1;
+  string display_name = 2;
+  string icon_path = 3;
+
+  string created_at = 10;
+  string updated_at = 11;
+}
