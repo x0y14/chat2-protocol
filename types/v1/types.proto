@@ -1,15 +1,15 @@
 syntax = "proto3";
 
-package dev.x0y14.chat2.types.v1;
+package types.v1;
 
-enum MessageKind {
-  MESSAGE_KIND_TEXT = 0;
-  MESSAGE_KIND_IMAGE = 1;
+enum MessageContentKind {
+  MESSAGE_CONTENT_KIND_TEXT_UNSPECIFIED = 0;
+  MESSAGE_CONTENT_KIND_IMAGE = 1;
 }
 
 message Message {
   string id = 1;
-  MessageKind kind = 2;
+  MessageContentKind content_kind = 2;
   string from = 3;
   string to = 4;
   string metadata = 5;
@@ -22,7 +22,7 @@ message Message {
 
 
 enum OperationKind {
-  OPERATION_KIND_NOOP = 0;
+  OPERATION_KIND_NOOP_UNSPECIFIED = 0;
   OPERATION_KIND_SEND_MESSAGE = 1;
   OPERATION_KIND_FETCH_OPS = 2;
 }

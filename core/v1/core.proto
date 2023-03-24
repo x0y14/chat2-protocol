@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package core.v1;
+import "types/v1/types.proto";
+
+// メッセージ送信
+message SendMessageRequest {
+  message SimpleMessage {
+    types.v1.MessageContentKind content_kind = 1;
+    string to = 2;
+    string metadata = 3;
+    string text = 4;
+  }
+  SimpleMessage simple_message = 1;
+}
+message SendMessageResponse {
+  types.v1.Message message = 1;
+}
+
+// オペレーション取得
+message FetchOpsRequest {
+  string last_operation_id = 1; // これより大きいIDが返却される(過去+リアルタイム), 空白だった場合は、リアルタイムで全部返す
+}
+message FetchOpsResponse {
+  types.v1.Operation op = 1;
+}
+
+
+service CoreService {
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
+  rpc FetchOps(FetchOpsRequest) returns (stream FetchOpsResponse) {}
+}
