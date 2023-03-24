@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package types.v1;
+import "google/protobuf/timestamp.proto";
 
 enum MessageContentKind {
   MESSAGE_CONTENT_KIND_TEXT_UNSPECIFIED = 0;
@@ -16,8 +17,8 @@ message Message {
 
   string text = 6;
 
-  string created_at = 10;
-  string updated_at = 11;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
 }
 
 
@@ -36,8 +37,8 @@ message Operation {
   string param3 = 5;
   Message msg = 6;
 
-  string created_at = 10;
-  string updated_at = 11;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
 }
 
 
@@ -46,6 +47,6 @@ message Profile {
   string display_name = 2;
   string icon_path = 3;
 
-  string created_at = 10;
-  string updated_at = 11;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
 }
